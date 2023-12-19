@@ -1,6 +1,9 @@
-import net from 'net'
+import net from 'net';
+import promptSync from 'prompt-sync';
 
-const host = '127.0.0.1';
+const prompt = promptSync();
+
+let host = prompt('Host: ');
 
 function scanPort(port) {
   const socket = new net.Socket();
@@ -22,6 +25,6 @@ function scanPorts(startPort, endPort) {
   }
 }
 
-const startPort = 1; 
-const endPort = 500; 
+let startPort = Number(prompt('First port to scan: '));
+let endPort = Number(prompt('Last port to scan: '));
 scanPorts(startPort, endPort);
